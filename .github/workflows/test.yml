@@ -33,4 +33,4 @@ jobs:
           
       - name: Copy files to the production website with the AWS CLI
         run: |
-          aws s3 cp . s3://${{ BUCKET_NAME }}/ --recursive --acl public-read
+          aws s3 cp . s3://${{ env.BUCKET_NAME }}/ --recursive --acl public-read
