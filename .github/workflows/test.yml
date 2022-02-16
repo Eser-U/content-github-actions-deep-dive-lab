@@ -18,7 +18,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::232067807333:role/github-action-s3-role
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
       - name: Setup node.js 
@@ -30,7 +31,7 @@ jobs:
         run: |
           npm ci
           npm run build  
-          
+
       - name: Copy files to the production website with the AWS CLI
         run: |
           aws s3 cp . s3://${{ BUCKET_NAME }}/ --recursive --acl public-read
