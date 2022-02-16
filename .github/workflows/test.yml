@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUCKET_NAME: cfst-3457-934d8d8fdcdb9824be4882d5f-nonprodbucket-mcit9dcaynqg
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: checkout code
         uses: actions/checkout@v2
